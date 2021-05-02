@@ -5,7 +5,6 @@
   "author": "FozlyRabbi <rabbihasan151537@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "client": "parcel ./public/index.html",
     "server": "json-server --watch ./server/db.json"
 
   },
