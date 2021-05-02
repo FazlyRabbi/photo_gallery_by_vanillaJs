@@ -1,7 +1,7 @@
 function PhotoGallery() {}
 PhotoGallery.prototype.getData = () => {
   const album = new Promise((resolve, reject) => {
-    fetch("http://localhost:3000/photos").then((data) => {
+    fetch("https://fake-server-app45.herokuapp.com/photos").then((data) => {
       resolve(data.json());
     });
   });
