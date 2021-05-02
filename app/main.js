@@ -25,9 +25,21 @@ function DisplayList(items, wrapper, rows_per_page, page) {
     const paginated_items = data.slice(start, end);
 
     paginated_items.map((res) => {
-      document.getElementById(
-        "photo_box"
-      ).innerHTML += `<img id="img" src="${res.ThumbnailUrl}"  alt=${res.Url}>`;
+      document.getElementById("photo_box").innerHTML += `                
+     
+      <div class="card" style="width: 15rem">
+      <img
+        class="card-img-top"
+        src="${res.ThumbnailUrl}"
+        alt="${res.Url}"
+        id="card_img"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">${res.Title}</p>
+      </div>
+    </div>   
+      `;
       popupModal();
     });
   });
@@ -37,17 +49,20 @@ function DisplayList(items, wrapper, rows_per_page, page) {
 
     photo_box.forEach((ele) => {
       ele.addEventListener("click", (e) => {
-        document.getElementById(
-          "parant"
-        ).innerHTML += `<div class="popup_modal" id="popup_modal">
-              <img
-                class="image"
-                src="${e.target.alt}"
-                alt="img"
-              />
-              <i class="fas fa-times" id="cross"></i>
-            </div>`;
-        removeModal();
+        if (e.target.id === "card_img") {
+          document.getElementById(
+            "parant"
+          ).innerHTML += `<div class="popup_modal" id="popup_modal">
+                <img
+                  class="image"
+                  src="${e.target.alt}"
+                  alt="img"
+                />
+                <i class="fas fa-times" id="cross"></i>
+              </div>           
+              `;
+          removeModal();
+        }
       });
     });
   };
